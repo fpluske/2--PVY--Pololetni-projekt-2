@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pololetni projekt PVY-2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="nameInputScreen">
+    <input type="text" id="nameInput" placeholder="Zadej jméno" />
+    <button id="startBtn">Start</button>
+  </div>
+  <div id="scoreboard"></div>
+  <canvas id="gameCanvas" class="hidden"></canvas>
+  <div id="gameOverScreen" class="hidden"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
