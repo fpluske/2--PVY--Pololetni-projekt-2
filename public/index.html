@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pololetni projekt PVY-2</title>
+  <title>Střílecí hra</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="nameInputScreen">
-    <input type="text" id="nameInput" placeholder="Zadej jméno" />
+    <h1>Střílecí hra</h1>
+    <input type="text" id="nameInput" placeholder="Zadej jméno (např. Adamek)" />
     <button id="startBtn">Start</button>
   </div>
   <div id="scoreboard"></div>
@@ -16,5 +17,8 @@
   <div id="gameOverScreen" class="hidden"></div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="client.js"></script>
+  <footer>
+        &copy; 2025, autoři: <strong>František Pluške, Matyáš Fiala</strong>, třída: <strong>IT2</strong> &reg;
+    </footer>
 </body>
 </html>
