@@ -3,13 +3,24 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "František Pluške, Matyáš Fiala",
   "license": "ISC",
-  "description": "",
   "dependencies": {
+    "better-sqlite3": "^11.10.0",
     "express": "^5.1.0",
+    "nodemon": "^3.1.10",
     "socket.io": "^4.8.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fpluske/2--PVY--Pololetni-projekt-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fpluske/2--PVY--Pololetni-projekt-2/issues"
+  },
+  "homepage": "https://github.com/fpluske/2--PVY--Pololetni-projekt-2#readme",
+  "description": ""
 }

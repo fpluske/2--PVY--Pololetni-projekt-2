@@ -104,13 +104,16 @@ function update() {
   const me = players[myName];
   if (!me) return;
 
-  if (keys["ArrowUp"] || keys["w"]) me.y -= speed;
-  if (keys["ArrowDown"] || keys["s"]) me.y += speed;
-  if (keys["ArrowLeft"] || keys["a"]) me.x -= speed;
-  if (keys["ArrowRight"] || keys["d"]) me.x += speed;
+  const newX = me.x + (keys["ArrowRight"] || keys["d"] ? speed : 0) - (keys["ArrowLeft"] || keys["a"] ? speed : 0);
+  const newY = me.y + (keys["ArrowDown"] || keys["s"] ? speed : 0) - (keys["ArrowUp"] || keys["w"] ? speed : 0);
+
+  // Omez hráče na velikost canvasu
+  me.x = Math.max(15, Math.min(canvas.width - 15, newX));
+  me.y = Math.max(15, Math.min(canvas.height - 15, newY));
 
   socket.emit("updatePosition", { x: me.x, y: me.y });
 }
+
 
 function render() {
   if (!gameActive) return;
@@ -181,18 +184,24 @@ window.addEventListener("click", e => {
 
   const me = players[myName];
   if (!me) return;
-  const angle = Math.atan2(e.clientY - me.y, e.clientX - me.x);
-  const dx = Math.cos(angle);
-  const dy = Math.sin(angle);
+
+  const dxRaw = e.clientX - me.x;
+  const dyRaw = e.clientY - me.y;
+  const length = Math.hypot(dxRaw, dyRaw);
+  const dx = dxRaw / length;
+  const dy = dyRaw / length;
+
   const bullet = {
     x: me.x,
     y: me.y,
     dx,
     dy
   };
+
   bullets.push({ ...bullet, owner: myName });
   socket.emit("shoot", bullet);
 });
+
 
 // Responzivní plátno
 function resizeCanvas() {
